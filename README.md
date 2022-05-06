@@ -1,6 +1,6 @@
 # StarNavi test task
 
-[DEMO LINK]()
+[DEMO LINK](https://krulykovskyi.github.io/StarNavi-test-task/)
 
 [TASK SOURCE](https://starnavi-frontend-test-task-v3.netlify.app/)
 
