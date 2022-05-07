@@ -5,7 +5,7 @@
 
 ## Attention!
 If page with demo doesn't work try to solve the problem following this steps:
-![alt text](https://prnt.sc/hqA-Wr5oeF9G)
+![Solve request issue on demo page](./solve-request-issue.png)
 
 [TASK SOURCE](https://starnavi-frontend-test-task-v3.netlify.app/)
 
