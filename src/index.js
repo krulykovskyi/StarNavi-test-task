@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './components/App/App';
 
-const modesUrl = 'http://demo7919674.mockable.io';
+const modesUrl = 'https://demo7919674.mockable.io';
 
 fetch(modesUrl, { mode: 'cors'})
   .then(response => response.json())
