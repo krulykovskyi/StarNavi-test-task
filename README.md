@@ -1,6 +1,11 @@
 # StarNavi test task
 
+## You can use app by this link:
 [DEMO LINK](https://krulykovskyi.github.io/StarNavi-test-task/)
+
+## Attention!
+If page with demo doesn't work try to solve the problem following this steps:
+![alt text](https://prnt.sc/hqA-Wr5oeF9G)
 
 [TASK SOURCE](https://starnavi-frontend-test-task-v3.netlify.app/)
 
@@ -15,3 +20,9 @@
 - babel-loader: connects Babel to webpack's build process
 - @babel/preset-env: group of commonly used Babel plugins bundled into a preset that converts modern JavaScript features into widely compatible syntax
 - @babel/preset-react: React-specific Babel plugins that convert JSX syntax into plain old JavaScript that browsers can understand
+
+### To run this app on your:
+  1. fork this repo
+  2. clone it using `git clone (link/to/forked/repo)`
+  3. install the dependencies using `npm i`
+  4. start server with `npm start`
