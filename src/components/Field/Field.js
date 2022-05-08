@@ -1,25 +1,15 @@
-import React, { useState, useContext }from "react";
+import React, { useContext } from "react";
 import { FieldRow } from "../FieldRow/FieldRow";
 import { AppContext } from "../../context/AppContext";
 
 export const Field = () => {
-  const [ field, setField ] = useState([]);
-  const { mode } = useContext(AppContext);
-
-  if(field.length !== mode) {
-    setField(Array(mode).fill(null));
-  }
+  const { field } = useContext(AppContext);
 
   return (
     <div className="field">
-      { field.map((el, index) => (
-          <FieldRow
-            field={field}
-            key={index}
-            rowIndex={index + 1}
-          />
-        ))
-      }
+      {field.map((row, index) => (
+        <FieldRow key={index} row={row} rowIndex={index} />
+      ))}
     </div>
   );
-}
+};

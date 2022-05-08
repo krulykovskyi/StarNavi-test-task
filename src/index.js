@@ -4,7 +4,7 @@ import { App } from './components/App/App';
 
 const modesUrl = 'https://demo7919674.mockable.io';
 
-fetch(modesUrl, { mode: 'cors'})
+fetch(modesUrl)
   .then(response => response.json())
   .then(data => {
 

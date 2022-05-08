@@ -20,14 +20,9 @@
 
       #root {
         width: 100%;
-        min-height: 80%;
-        height: max-content;
       }
 
       .app {
-        width: max-content;
-        min-height: 300px;
-        height: max-content;
         margin: 40px auto 0;
       }
 
@@ -106,7 +101,20 @@
       }
 
       .hovered-squares__list {
+        height: 600px;
+        overflow-y: scroll;
         list-style: none;
+      }
+
+      ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+      }
+      ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, .5);
+        -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+        box-shadow: 0 0 1px rgba(255, 255, 255, .5);
       }
 
       .hovered-squares__list-item {

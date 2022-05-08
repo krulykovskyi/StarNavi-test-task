@@ -1,29 +1,25 @@
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
-export const Square = ({
-  rowIndex,
-  columnIndex,
-}) => {
-  const [ thisSquare, setThisSquare ] = useState({ rowIndex, columnIndex, isBlue: false});
-  const { hoveredSquares, setHoveredSquares } = useContext(AppContext);
+export const Square = ({ rowIndex, columnIndex }) => {
+  const { field, setField } = useContext(AppContext);
 
   const mouseEnterHandler = () => {
-    thisSquare.isBlue = !thisSquare.isBlue;
-    setThisSquare(thisSquare);
+    const newField = field.map((row, rowI) => {
+      if(rowIndex === rowI) {
+        return row.map((col, colI) => (colI === columnIndex ? !col : col));
+      }
 
-    if(!thisSquare.isBlue) {
-      setHoveredSquares(hoveredSquares.filter(square => square !== thisSquare));
-      return
-    }
+      return row;
+    });
 
-    setHoveredSquares([ ...hoveredSquares, thisSquare]);
-  }
+    setField(newField);
+  };
 
   return (
     <div
-      className={`square ${ thisSquare.isBlue ? 'square--blue' : '' }`}
-      onMouseEnter={() => mouseEnterHandler()}
+      className={`square ${field[rowIndex][columnIndex] ? "square--blue" : ""}`}
+      onMouseEnter={mouseEnterHandler}
     />
-  )
-}
+  );
+};

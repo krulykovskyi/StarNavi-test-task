@@ -1,35 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { Field } from '../Field/Field';
-import { HoveredSquares } from '../HoveredSquares/HoveredSquares';
+import { HoveredList } from '../HoveredList/HoveredList';
 
-export const App = (props) => {
-  const modes = props.modes;
-  const [ mode, setMode ] = useState('');
+export const App = ({ modes }) => {
   const [ isStarted, start ] = useState(false);
-  const [ hoveredSquares, setHoveredSquares ] = useState([]);
+  const [ field, setField ] = useState([]);
+
+  const selectModeHandler = useCallback((event) => {
+    const mode = +event.target.value;
+
+    if(mode) {
+      setField(Array(mode).fill(Array(mode).fill(false)));
+    }
+  });
+
+  const startHandler = useCallback(() => start(true), []);
+
+  const renderOptions = ({ field, name }) => <option value={field} key={field}>{name}</option>;
 
   return (
     <div className="app">
       <section className="header">
         <select
           className="select-mode"
-          onChange={(event) => setMode(+event.target.value)}
+          onChange={selectModeHandler}
         >
-          <option disabled={isStarted}>Pick mode</option>
-          {
-            modes.map(modeObj => (
-              <option value={modeObj.field} key={modeObj.field}>
-                {modeObj.name}
-              </option>)
-            )
-          }
+          <option disabled={!!field.length}>Pick mode</option>
+          { modes.map(renderOptions) }
         </select>
 
         <button
           className="start-btn"
-          onClick={() => start(true)}
-          disabled={!mode}
+          onClick={startHandler}
+          disabled={!field.length}
         >
           START
         </button>
@@ -37,9 +41,9 @@ export const App = (props) => {
       {
         isStarted && (
           <section className="main">
-            <AppContext.Provider value={{ mode, hoveredSquares, setHoveredSquares }}>
+            <AppContext.Provider value={{ field, setField }}>
               <Field />
-              <HoveredSquares hoveredSquares={hoveredSquares} />
+              <HoveredList />
             </AppContext.Provider>
           </section>
         )
